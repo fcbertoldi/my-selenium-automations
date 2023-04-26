@@ -13,7 +13,8 @@ import PyPDF2
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-# from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 RE_FUNDO = re.compile(r"Fundo de Reserva\D*?(?P<fundo>\d+(,?\d{2}))")
@@ -23,6 +24,8 @@ DEFAULT_CONFIG_PATH = os.path.dirname(os.path.dirname(__file__)) / Path(
 )
 
 IBAGY_FUNDO_RESERVA_KEY = "ibagy-fundo-reserva"
+
+REDIRECT_URL = "https://ibagy.com.br/obrigado/?target=fundo-de-reserva"
 
 # TODO usar Hatch pra configurar o projeto.
 # https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml
@@ -95,8 +98,9 @@ def _submit_ibagy_form(
 
         enviar_btn = driver.find_element(by=By.ID, value="FORM_A_submit-action-button")
         enviar_btn.click()
-        # TODO add wait on URL change. The page will redirect at the end, we need to match with the expected URL
-        time.sleep(2)
+
+        WebDriverWait(driver, 10).until(EC.url_matches(REDIRECT_URL))
+        # time.sleep(10)
 
 
 # TODO set up setup.py and install with pipx
