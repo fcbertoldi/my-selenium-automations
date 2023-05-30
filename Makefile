@@ -10,6 +10,9 @@ sync-dev:
 
 requirements-dev.txt: requirements.txt
 
+install:
+	pew new -p python3.11 -r requirements.txt -r requirements-dev.txt my-selenium-automations
+
 %.txt: %.in
 	pip-compile --output-file $@ $<
 
