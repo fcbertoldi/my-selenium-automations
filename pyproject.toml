@@ -3,3 +3,7 @@ name = "my-selenium-automations"
 version = "0.1"
 authors = [{ name = "Fernando Costa Bertoldi", email = "fcbertoldi@gmail.com" }]
 requires-python = ">=3.11"
+dependencies = ["PyPDF2", "selenium"]
+
+[project.optional-dependencies]
+dev = ["flake8", "black", "ipython"]
