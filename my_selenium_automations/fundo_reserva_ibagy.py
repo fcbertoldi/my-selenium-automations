@@ -99,8 +99,8 @@ def _submit_ibagy_form(
         enviar_btn = driver.find_element(by=By.ID, value="FORM_A_submit-action-button")
         enviar_btn.click()
 
-        WebDriverWait(driver, 10).until(EC.url_matches(REDIRECT_URL))
-        # time.sleep(10)
+        # WebDriverWait(driver, 10).until(EC.url_matches(REDIRECT_URL))
+        time.sleep(10)
 
 
 # TODO set up setup.py and install with pipx
