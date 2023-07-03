@@ -17,7 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-RE_FUNDO = re.compile(r"Fundo de Reserva\D*?(?P<fundo>\d+(,?\d{2}))")
+FUNDO_RE = re.compile(r"Fundo de Reserva\D*?(?P<fundo>\d+(,?\d{2}))")
 
 DEFAULT_CONFIG_PATH = os.path.dirname(os.path.dirname(__file__)) / Path(
     ".my_selenium_automations.toml"
@@ -25,12 +25,17 @@ DEFAULT_CONFIG_PATH = os.path.dirname(os.path.dirname(__file__)) / Path(
 
 IBAGY_FUNDO_RESERVA_KEY = "ibagy-fundo-reserva"
 
-REDIRECT_URL = "https://ibagy.com.br/obrigado/?target=fundo-de-reserva"
+# REDIRECT_URL = "https://ibagy.com.br/obrigado/?target=fundo-de-reserva"
+REDIRECT_URL_RE = r"ibagy\.com\.br/obrigado"
+
+TIMEOUT = 30
+IMPLICIT_TIMEOUT = 5
+
 
 # TODO usar Hatch pra configurar o projeto.
 # https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml
 
-# ATENCAO: Garanta que tenha selenium-manager instalado para automaticamente gerenciar os webdrivers
+# ATENCAO: Garanta que tenha o selenium-manager instalado para automaticamente gerenciar os webdrivers
 # https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta
 
 
@@ -39,7 +44,7 @@ def _parsear_fundo_de_reserva(pdf_filepath):
         pdf_reader = PyPDF2.PdfReader(f)
         for page in pdf_reader.pages:
             page_text = page.extract_text()
-            if m := RE_FUNDO.search(page_text):
+            if m := FUNDO_RE.search(page_text):
                 return m.group("fundo")
 
     return None
@@ -62,7 +67,7 @@ def _submit_ibagy_form(
         )
         fundo_reservas_access_btn.click()
 
-        # nome_inquilino_input = WebDriverWait(driver, timeout=10).until(lambda d: d.find_element(by=By.CSS_SELECTOR, value="input[name='nome_do_inquilino']"))
+        # nome_inquilino_input = WebDriverWait(driver, timeout=TIMEOUT).until(lambda d: d.find_element(by=By.CSS_SELECTOR, value="input[name='nome_do_inquilino']"))
         nome_inquilino_input = driver.find_element(
             by=By.CSS_SELECTOR, value="input[name='nome_do_inquilino']"
         )
@@ -99,8 +104,8 @@ def _submit_ibagy_form(
         enviar_btn = driver.find_element(by=By.ID, value="FORM_A_submit-action-button")
         enviar_btn.click()
 
-        # WebDriverWait(driver, 10).until(EC.url_matches(REDIRECT_URL))
-        time.sleep(10)
+        WebDriverWait(driver, timeout=TIMEOUT).until(EC.url_matches(REDIRECT_URL_RE))
+        # time.sleep(TIMEOUT)
 
 
 # TODO set up setup.py and install with pipx
