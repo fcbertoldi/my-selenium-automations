@@ -7,7 +7,7 @@ requirements.txt: requirements.in
 requirements-dev.txt: requirements.txt requirements-dev.in
 
 %.txt: %.in
-	pip-compile --output-file $@ $<
+	pew in $(VENV_NAME) pip-compile --output-file $@ $<
 
 sync:
 	pew in $(VENV_NAME) pip-sync requirements.txt requirements-dev.txt

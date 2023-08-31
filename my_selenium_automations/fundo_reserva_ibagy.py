@@ -4,11 +4,10 @@ import argparse
 import os
 import re
 import sys
-import time
 import tomllib
 from pathlib import Path
 
-import PyPDF2
+import pypdf
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -41,7 +40,7 @@ IMPLICIT_TIMEOUT = 5
 
 def _parsear_fundo_de_reserva(pdf_filepath):
     with open(pdf_filepath, "rb") as f:
-        pdf_reader = PyPDF2.PdfReader(f)
+        pdf_reader = pypdf.PdfReader(f)
         for page in pdf_reader.pages:
             page_text = page.extract_text()
             if m := FUNDO_RE.search(page_text):
