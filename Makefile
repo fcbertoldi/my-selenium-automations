@@ -23,6 +23,7 @@ install:
 	pipx install -e .
 
 clean:
+	fd -t d __pycache__ . -x rm -rf
 	rm -rf dist/
 
 .PHONY: sync build-pkg install-dev install clean
