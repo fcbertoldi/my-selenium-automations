@@ -3,3 +3,11 @@ name = "my-selenium-automations"
 version = "0.1"
 authors = [{ name = "Fernando Costa Bertoldi", email = "fcbertoldi@gmail.com" }]
 requires-python = ">=3.11"
+
+[project.scripts]
+fundo-reserva-ibagy = "my_selenium_automations:fundo_reserva_ibagy"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+

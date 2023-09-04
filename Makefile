@@ -12,7 +12,8 @@ requirements-dev.txt: requirements.txt requirements-dev.in
 sync:
 	pew in $(VENV_NAME) pip-sync requirements.txt requirements-dev.txt
 
-install:
+install-dev:
 	pew new -p python3.11 -r requirements.txt -r requirements-dev.txt $(VENV_NAME)
+	pew in $(VENV_NAME) python -m pip install -e .
 
-.PHONY: sync install
+.PHONY: sync install-dev

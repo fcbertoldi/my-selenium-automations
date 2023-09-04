@@ -116,7 +116,8 @@ parser.add_argument("file_b")
 parser.add_argument("-c", "--config-file")
 parser.add_argument("-r", "--fundo-reserva-valor")
 
-if __name__ == "__main__":
+
+def main():
     args = parser.parse_args()
     config_file = args.config_file or DEFAULT_CONFIG_PATH
     with open(config_file, "rb") as f:
@@ -138,3 +139,7 @@ if __name__ == "__main__":
     _submit_ibagy_form(
         fundo_valor=fundo_valor, file_a=args.file_a, file_b=args.file_b, **ibagy_data
     )
+
+
+if __name__ == "__main__":
+    main()

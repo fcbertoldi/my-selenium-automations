@@ -1,6 +1,7 @@
 -c requirements.txt
 
 pip-tools
+build
 flake8
 black
 ipython
