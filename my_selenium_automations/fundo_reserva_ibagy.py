@@ -31,9 +31,6 @@ TIMEOUT = 30
 IMPLICIT_TIMEOUT = 5
 
 
-# TODO usar Hatch pra configurar o projeto.
-# https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml
-
 # ATENCAO: Garanta que tenha o selenium-manager instalado para automaticamente gerenciar os webdrivers
 # https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta
 
