@@ -107,9 +107,6 @@ def _submit_ibagy_form(
         # time.sleep(TIMEOUT)
 
 
-# TODO set up setup.py and install with pipx
-# https://pypa.github.io/pipx/how-pipx-works/
-
 parser = argparse.ArgumentParser()
 parser.add_argument("file_a")
 parser.add_argument("file_b")
