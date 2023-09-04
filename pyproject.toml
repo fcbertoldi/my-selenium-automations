@@ -3,6 +3,7 @@ name = "my-selenium-automations"
 version = "0.1"
 authors = [{ name = "Fernando Costa Bertoldi", email = "fcbertoldi@gmail.com" }]
 requires-python = ">=3.11"
+dynamic = ["dependencies"]
 
 [project.scripts]
 fundo-reserva-ibagy = "my_selenium_automations:fundo_reserva_ibagy"
@@ -11,3 +12,5 @@ fundo-reserva-ibagy = "my_selenium_automations:fundo_reserva_ibagy"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

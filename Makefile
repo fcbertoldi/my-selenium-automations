@@ -16,4 +16,7 @@ install-dev:
 	pew new -p python3.11 -r requirements.txt -r requirements-dev.txt $(VENV_NAME)
 	pew in $(VENV_NAME) python -m pip install -e .
 
-.PHONY: sync install-dev
+install:
+	pipx install -e .
+
+.PHONY: sync install-dev install
