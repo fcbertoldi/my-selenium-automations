@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import argparse
-import os
 import re
 import sys
 import tomllib
@@ -18,8 +17,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 FUNDO_RE = re.compile(r"Fundo de Reserva\D*?(?P<fundo>\d+(,?\d{2}))")
 
-DEFAULT_CONFIG_PATH = os.path.dirname(os.path.dirname(__file__)) / Path(
-    ".my_selenium_automations.toml"
+DEFAULT_CONFIG_PATH = (
+    Path.home() / ".config" / "my-selenium-automations" / "config.toml"
 )
 
 IBAGY_FUNDO_RESERVA_KEY = "ibagy-fundo-reserva"
