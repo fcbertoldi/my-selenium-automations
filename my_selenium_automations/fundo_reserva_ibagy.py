@@ -91,7 +91,7 @@ def _submit_ibagy_form(
         anexos_input = driver.find_element(
             by=By.CSS_SELECTOR, value="input.dz-hidden-input[type='file']"
         )
-        anexos_input.send_keys("\n".join([file_a, file_b]))
+        anexos_input.send_keys("\n".join([str(file_a), str(file_b)]))
 
         accept_termos = driver.find_element(by=By.CSS_SELECTOR, value="div.checkmark")
         accept_termos.click()
@@ -103,9 +103,13 @@ def _submit_ibagy_form(
         # time.sleep(TIMEOUT)
 
 
+def _to_absolute_path(arg):
+    return Path(arg).absolute()
+
+
 parser = argparse.ArgumentParser()
-parser.add_argument("file_a")
-parser.add_argument("file_b")
+parser.add_argument("file_a", type=_to_absolute_path)
+parser.add_argument("file_b", type=_to_absolute_path)
 parser.add_argument("-c", "--config-file")
 parser.add_argument("-r", "--fundo-reserva-valor")
 
