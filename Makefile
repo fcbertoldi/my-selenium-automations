@@ -10,7 +10,7 @@ requirements-dev.txt: requirements.txt requirements-dev.in
 	pew in $(VENV_NAME) pip-compile --output-file $@ $<
 
 sync:
-	pew in $(VENV_NAME) pip-sync requirements.txt requirements-dev.txt
+	pew in $(VENV_NAME) pip-sync --pip-args "--no-deps" requirements.txt requirements-dev.txt
 
 build-pkg:
 	pew in $(VENV_NAME) python -m build
