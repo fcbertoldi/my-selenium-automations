@@ -18,7 +18,7 @@ idna==3.4
     # via trio
 outcome==1.2.0
     # via trio
-pypdf==3.14.0
+pypdf==3.17.4
     # via -r requirements.in
 pysocks==1.7.1
     # via urllib3
@@ -34,7 +34,9 @@ trio==0.22.2
     #   trio-websocket
 trio-websocket==0.10.3
     # via selenium
-urllib3[socks]==2.0.4
-    # via selenium
+urllib3[socks]==2.1.0
+    # via
+    #   -r requirements.in
+    #   selenium
 wsproto==1.2.0
     # via trio-websocket
