@@ -3,5 +3,5 @@
 pip-tools
 build
 flake8
-black
+black>=24.3.0
 ipython
