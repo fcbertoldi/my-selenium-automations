@@ -1,3 +1,4 @@
 pypdf>=3.17.0
 urllib3>=2.0.6
+idna>=3.7
 selenium
