@@ -30,7 +30,8 @@ TIMEOUT = 30
 IMPLICIT_TIMEOUT = 5
 
 
-# ATENCAO: Garanta que tenha o selenium-manager instalado para automaticamente gerenciar os webdrivers
+# ATENCAO: Use a ferramenta selenium-manager para automaticamente gerenciar os webdrivers
+# está instalada em $VIRTUAL_ENV/lib/python3.11/site-packages/selenium/webdriver/common/linux/selenium-manager
 # https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta
 
 
