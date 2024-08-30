@@ -3,6 +3,7 @@
 import argparse
 import re
 import sys
+import time
 import tomllib
 from pathlib import Path
 
@@ -22,9 +23,7 @@ DEFAULT_CONFIG_PATH = (
 )
 
 IBAGY_FUNDO_RESERVA_KEY = "ibagy-fundo-reserva"
-
-# REDIRECT_URL = "https://ibagy.com.br/obrigado/?target=fundo-de-reserva"
-REDIRECT_URL_RE = r"ibagy\.com\.br/obrigado"
+RESSARCIMENTO_URL_RE = r"ibagy\.bitrix24\.site/condominioressarcimento/ressarcimento/"
 
 TIMEOUT = 30
 IMPLICIT_TIMEOUT = 5
@@ -47,7 +46,7 @@ def _parsear_fundo_de_reserva(pdf_filepath):
 
 
 def _submit_ibagy_form(
-    *, fundo_valor, file_a, file_b, full_name, email, telephone, contract_number
+    *, fundo_valor, boleto, comprovante, full_name, email, telephone, contract_number
 ):
     with webdriver.Chrome() as driver:
         # navigate to the URL
@@ -58,50 +57,48 @@ def _submit_ibagy_form(
         cookies_btn = driver.find_element(by=By.ID, value="cookie-consent-btn")
         cookies_btn.click()
 
-        fundo_reservas_access_btn = driver.find_element(
-            by=By.CSS_SELECTOR, value="a[href='#clb-modal-areadocliente-bloco1']"
+        ressarcimento_link = driver.find_element(
+            By.XPATH, value="//a[contains(@href,'condominioressarcimento/ressarcimento')]"
         )
-        fundo_reservas_access_btn.click()
+        driver.execute_script("arguments[0].removeAttribute('target');", ressarcimento_link)
+        ressarcimento_link.click()
 
-        # nome_inquilino_input = WebDriverWait(driver, timeout=TIMEOUT).until(lambda d: d.find_element(by=By.CSS_SELECTOR, value="input[name='nome_do_inquilino']"))
+        wait = WebDriverWait(driver, timeout=TIMEOUT)
+        wait.until(EC.url_matches(RESSARCIMENTO_URL_RE))
+
         nome_inquilino_input = driver.find_element(
-            by=By.CSS_SELECTOR, value="input[name='nome_do_inquilino']"
+            by=By.NAME, value="name"
         )
         nome_inquilino_input.send_keys(full_name)
 
         email_input = driver.find_element(
-            by=By.CSS_SELECTOR, value="input[name='email']"
+            by=By.NAME, value="email"
         )
         email_input.send_keys(email)
 
         telefone_input = driver.find_element(
-            by=By.CSS_SELECTOR, value="input[name='telefone']"
+            by=By.NAME, value="phone"
         )
         telefone_input.send_keys(telephone)
 
-        codigo_contrato = driver.find_element(
-            by=By.CSS_SELECTOR, value="input[name='codigo_do_contrato']"
-        )
+        codigo_contrato = driver.find_elements(
+            by=By.TAG_NAME, value="input"
+        )[3]
         codigo_contrato.send_keys(contract_number)
 
         observacoes_input = driver.find_element(
-            by=By.CSS_SELECTOR, value="textarea[name='observacoes']"
+            by=By.TAG_NAME, value="textarea"
         )
         observacoes_input.send_keys(f"Fundo de reserva: {fundo_valor}")
 
-        anexos_input = driver.find_element(
-            by=By.CSS_SELECTOR, value="input.dz-hidden-input[type='file']"
-        )
-        anexos_input.send_keys("\n".join([str(file_a), str(file_b)]))
+        boleto_input, comprovante_input = driver.find_elements(By.CSS_SELECTOR, value="input[type='file']")
+        boleto_input.send_keys(str(boleto))
+        comprovante_input.send_keys(str(comprovante))
 
-        accept_termos = driver.find_element(by=By.CSS_SELECTOR, value="div.checkmark")
-        accept_termos.click()
-
-        enviar_btn = driver.find_element(by=By.ID, value="FORM_A_submit-action-button")
+        enviar_btn = driver.find_element(by=By.CSS_SELECTOR, value="button[type='submit']")
         enviar_btn.click()
 
-        WebDriverWait(driver, timeout=TIMEOUT).until(EC.url_matches(REDIRECT_URL_RE))
-        # time.sleep(TIMEOUT)
+        time.sleep(TIMEOUT)
 
 
 def _to_absolute_path(arg):
@@ -109,8 +106,8 @@ def _to_absolute_path(arg):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("file_a", type=_to_absolute_path)
-parser.add_argument("file_b", type=_to_absolute_path)
+parser.add_argument("boleto", type=_to_absolute_path)
+parser.add_argument("comprovante", type=_to_absolute_path)
 parser.add_argument("-c", "--config-file")
 parser.add_argument("-r", "--fundo-reserva-valor")
 
@@ -126,8 +123,8 @@ def main():
     fundo_valor = args.fundo_reserva_valor
     if fundo_valor is None:
         fundo_valor = _parsear_fundo_de_reserva(
-            args.file_a
-        ) or _parsear_fundo_de_reserva(args.file_b)
+            args.boleto
+        )
 
     if fundo_valor is None:
         print("Não foi possível achar valor de reserva")
@@ -135,7 +132,7 @@ def main():
 
     print(f"Fundo de reserva: {fundo_valor}")
     _submit_ibagy_form(
-        fundo_valor=fundo_valor, file_a=args.file_a, file_b=args.file_b, **ibagy_data
+        fundo_valor=fundo_valor, boleto=args.boleto, comprovante=args.comprovante, **ibagy_data
     )
 
 
