@@ -1,6 +1,6 @@
 [project]
 name = "my-selenium-automations"
-version = "2024.08.30"
+version = "2025.05.20"
 authors = [{ name = "Fernando Costa Bertoldi", email = "fcbertoldi@gmail.com" }]
 requires-python = ">=3.11"
 dynamic = ["dependencies"]
