@@ -8,7 +8,7 @@ build==1.2.2.post1
     # via
     #   -r requirements-dev.in
     #   pip-tools
-click==8.2.0
+click==8.2.1
     # via
     #   black
     #   pip-tools
@@ -16,9 +16,9 @@ decorator==5.2.1
     # via ipython
 executing==2.2.0
     # via stack-data
-flake8==7.2.0
+flake8==7.3.0
     # via -r requirements-dev.in
-ipython==9.2.0
+ipython==9.3.0
     # via -r requirements-dev.in
 ipython-pygments-lexers==1.1.1
     # via ipython
@@ -52,11 +52,11 @@ ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.3
     # via stack-data
-pycodestyle==2.13.0
+pycodestyle==2.14.0
     # via flake8
-pyflakes==3.3.2
+pyflakes==3.4.0
     # via flake8
-pygments==2.19.1
+pygments==2.19.2
     # via
     #   ipython
     #   ipython-pygments-lexers
@@ -64,7 +64,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-setuptools==80.7.1
+setuptools==80.9.0
     # via pip-tools
 stack-data==0.6.3
     # via ipython
@@ -72,7 +72,7 @@ traitlets==5.14.3
     # via
     #   ipython
     #   matplotlib-inline
-typing-extensions==4.13.2
+typing-extensions==4.14.0
     # via
     #   -c requirements.txt
     #   ipython
