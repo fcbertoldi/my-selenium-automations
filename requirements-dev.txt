@@ -72,7 +72,7 @@ traitlets==5.14.3
     # via
     #   ipython
     #   matplotlib-inline
-typing-extensions==4.14.0
+typing-extensions==4.14.1
     # via
     #   -c requirements.txt
     #   ipython
