@@ -24,7 +24,7 @@ ipython-pygments-lexers==1.1.1
     # via ipython
 jedi==0.19.2
     # via ipython
-matplotlib-inline==0.1.7
+matplotlib-inline==0.2.1
     # via ipython
 mccabe==0.7.0
     # via flake8
@@ -40,11 +40,11 @@ pathspec==0.12.1
     # via black
 pexpect==4.9.0
     # via ipython
-pip==25.2
+pip==25.3
     # via pip-tools
 pip-tools==7.5.1
     # via -r requirements-dev.in
-platformdirs==4.4.0
+platformdirs==4.5.0
     # via black
 prompt-toolkit==3.0.52
     # via ipython
@@ -64,7 +64,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytokens==0.1.10
+pytokens==0.2.0
     # via black
 setuptools==80.9.0
     # via pip-tools
@@ -74,7 +74,7 @@ traitlets==5.14.3
     # via
     #   ipython
     #   matplotlib-inline
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via
     #   -c requirements.txt
     #   ipython
