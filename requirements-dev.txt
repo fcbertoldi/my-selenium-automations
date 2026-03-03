@@ -18,7 +18,7 @@ executing==2.2.1
     # via stack-data
 flake8==7.3.0
     # via -r requirements-dev.in
-ipython==9.9.0
+ipython==9.10.0
     # via -r requirements-dev.in
 ipython-pygments-lexers==1.1.1
     # via ipython
@@ -35,17 +35,17 @@ packaging==26.0
     #   black
     #   build
     #   wheel
-parso==0.8.5
+parso==0.8.6
     # via jedi
-pathspec==1.0.3
+pathspec==1.0.4
     # via black
 pexpect==4.9.0
     # via ipython
-pip==25.3
+pip==26.0.1
     # via pip-tools
-pip-tools==7.5.2
+pip-tools==7.5.3
     # via -r requirements-dev.in
-platformdirs==4.5.1
+platformdirs==4.9.2
     # via black
 prompt-toolkit==3.0.52
     # via ipython
@@ -65,9 +65,9 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytokens==0.4.0
+pytokens==0.4.1
     # via black
-setuptools==80.10.1
+setuptools==82.0.0
     # via pip-tools
 stack-data==0.6.3
     # via ipython
@@ -79,7 +79,7 @@ typing-extensions==4.15.0
     # via
     #   -c requirements.txt
     #   ipython
-wcwidth==0.3.3
+wcwidth==0.6.0
     # via prompt-toolkit
 wheel==0.46.3
     # via pip-tools
