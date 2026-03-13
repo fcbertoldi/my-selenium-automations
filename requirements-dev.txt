@@ -2,7 +2,7 @@
 #    uv pip compile --output-file requirements-dev.txt requirements-dev.in
 asttokens==3.0.1
     # via stack-data
-black==26.1.0
+black==26.3.1
     # via -r requirements-dev.in
 build==1.4.0
     # via
@@ -45,7 +45,7 @@ pip==26.0.1
     # via pip-tools
 pip-tools==7.5.3
     # via -r requirements-dev.in
-platformdirs==4.9.2
+platformdirs==4.9.4
     # via black
 prompt-toolkit==3.0.52
     # via ipython
@@ -67,7 +67,7 @@ pyproject-hooks==1.2.0
     #   pip-tools
 pytokens==0.4.1
     # via black
-setuptools==82.0.0
+setuptools==82.0.1
     # via pip-tools
 stack-data==0.6.3
     # via ipython
