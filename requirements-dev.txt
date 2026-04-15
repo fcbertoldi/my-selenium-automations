@@ -4,11 +4,11 @@ asttokens==3.0.1
     # via stack-data
 black==26.3.1
     # via -r requirements-dev.in
-build==1.4.0
+build==1.4.3
     # via
     #   -r requirements-dev.in
     #   pip-tools
-click==8.3.1
+click==8.3.2
     # via
     #   black
     #   pip-tools
@@ -18,7 +18,7 @@ executing==2.2.1
     # via stack-data
 flake8==7.3.0
     # via -r requirements-dev.in
-ipython==9.10.0
+ipython==9.10.1
     # via -r requirements-dev.in
 ipython-pygments-lexers==1.1.1
     # via ipython
@@ -30,7 +30,7 @@ mccabe==0.7.0
     # via flake8
 mypy-extensions==1.1.0
     # via black
-packaging==26.0
+packaging==26.1
     # via
     #   black
     #   build
@@ -45,7 +45,7 @@ pip==26.0.1
     # via pip-tools
 pip-tools==7.5.3
     # via -r requirements-dev.in
-platformdirs==4.9.4
+platformdirs==4.9.6
     # via black
 prompt-toolkit==3.0.52
     # via ipython
@@ -57,7 +57,7 @@ pycodestyle==2.14.0
     # via flake8
 pyflakes==3.4.0
     # via flake8
-pygments==2.19.2
+pygments==2.20.0
     # via
     #   ipython
     #   ipython-pygments-lexers
