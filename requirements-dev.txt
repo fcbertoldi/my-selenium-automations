@@ -4,11 +4,11 @@ asttokens==3.0.1
     # via stack-data
 black==26.3.1
     # via -r requirements-dev.in
-build==1.4.3
+build==1.5.0
     # via
     #   -r requirements-dev.in
     #   pip-tools
-click==8.3.2
+click==8.3.3
     # via
     #   black
     #   pip-tools
@@ -18,36 +18,38 @@ executing==2.2.1
     # via stack-data
 flake8==7.3.0
     # via -r requirements-dev.in
-ipython==9.10.1
+ipython==9.13.0
     # via -r requirements-dev.in
 ipython-pygments-lexers==1.1.1
     # via ipython
-jedi==0.19.2
+jedi==0.20.0
     # via ipython
-matplotlib-inline==0.2.1
+matplotlib-inline==0.2.2
     # via ipython
 mccabe==0.7.0
     # via flake8
 mypy-extensions==1.1.0
     # via black
-packaging==26.1
+packaging==26.2
     # via
     #   black
     #   build
     #   wheel
-parso==0.8.6
+parso==0.8.7
     # via jedi
-pathspec==1.0.4
+pathspec==1.1.1
     # via black
 pexpect==4.9.0
     # via ipython
-pip==26.0.1
+pip==26.1.1
     # via pip-tools
 pip-tools==7.5.3
     # via -r requirements-dev.in
 platformdirs==4.9.6
     # via black
 prompt-toolkit==3.0.52
+    # via ipython
+psutil==7.2.2
     # via ipython
 ptyprocess==0.7.0
     # via pexpect
@@ -71,7 +73,7 @@ setuptools==82.0.1
     # via pip-tools
 stack-data==0.6.3
     # via ipython
-traitlets==5.14.3
+traitlets==5.15.0
     # via
     #   ipython
     #   matplotlib-inline
@@ -79,7 +81,7 @@ typing-extensions==4.15.0
     # via
     #   -c requirements.txt
     #   ipython
-wcwidth==0.6.0
+wcwidth==0.7.0
     # via prompt-toolkit
-wheel==0.46.3
+wheel==0.47.0
     # via pip-tools
